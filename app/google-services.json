@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "220645319105",
+    "firebase_url": "https://ifeedback-8f4ff.firebaseio.com",
+    "project_id": "ifeedback-8f4ff",
+    "storage_bucket": "ifeedback-8f4ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220645319105:android:b4c772c55c38ac87",
+        "android_client_info": {
+          "package_name": "com.info121.ifeedback"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "220645319105-gup5ppeu5vl6nvee7pvdc3pmjcd8pjje.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYM9P1FhdeHOdHM07UVQYEtGIuHG3E_Lo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group_1"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/home"
+            android:checked="false"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/register"
+            android:checked="false"
+            android:title="Register" />
+
+        <item
+            android:id="@+id/profile"
+            android:checked="false"
+            android:title="Profile" />
+
+        <item
+            android:id="@+id/create_fb"
+            android:checked="false"
+            android:title="Create Feedback" />
+
+        <item
+            android:id="@+id/view_fb"
+            android:checked="false"
+            android:title="View My Feedbacks" />
+
+        <item
+            android:id="@+id/view_draft"
+            android:checked="false"
+            android:title="View My Drafts" />
+
+
+        <item
+            android:id="@+id/notification"
+            android:checked="false"
+            android:title="Notification" />
+
+        <item
+            android:id="@+id/support"
+            android:checked="false"
+            android:title="Support" />
+
+    </group>
+
+
+
+
+</menu>

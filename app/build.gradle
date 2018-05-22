@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.info121.ifeedback"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            // proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+
+    implementation 'net.hockeyapp.android:HockeySDK:5.1.0'
+    implementation 'com.github.satyan:sugar:1.5'
+
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVer"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVer"
+
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    implementation "com.google.firebase:firebase-core:$rootProject.ext.firebaseVer"
+    implementation "com.google.firebase:firebase-crash:$rootProject.ext.firebaseVer"
+
+
+    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVer"
+    implementation "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVer"
+    implementation "com.android.support:cardview-v7:$rootProject.ext.supportLibraryVer"
+
+    implementation "com.android.support:design:$rootProject.ext.supportLibraryVer"
+    implementation "com.android.support:support-v4:$rootProject.ext.supportLibraryVer"
+
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+}
+
+
+apply plugin: 'com.google.gms.google-services'
