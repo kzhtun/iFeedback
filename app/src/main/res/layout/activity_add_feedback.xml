@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/iron"
     android:fitsSystemWindows="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginBottom="16dp">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -28,6 +29,169 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
+            <!--Picture Layout-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/main_padding">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/main_padding"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="14dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Photos Upload"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/base" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="8dp"
+                                android:gravity="center"
+                                android:text="Photo 1" />
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/photo_height">
+
+                                <Button
+                                    android:id="@+id/photo1_delete"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_gravity="top|right"
+                                    android:background="@color/delete_background"
+                                    android:text="X"
+                                    android:textColor="@color/red" />
+
+                                <ImageView
+                                    android:id="@+id/photo_1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/photo_height"
+                                    android:layout_weight="1"
+                                    android:background="@color/light"
+                                    android:clickable="true"
+                                    android:src="@mipmap/ic_camera_alt_black_48dp" />
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="@dimen/main_padding"
+                            android:layout_height="match_parent" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="8dp"
+                                android:gravity="center"
+                                android:text="Photo 1" />
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/photo_height">
+
+                                <Button
+                                    android:id="@+id/photo2_delete"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_gravity="top|right"
+                                    android:background="@color/delete_background"
+                                    android:text="X"
+                                    android:textColor="@color/red" />
+
+                                <ImageView
+                                    android:id="@+id/photo_2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/photo_height"
+                                    android:layout_weight="1"
+                                    android:background="@color/light"
+                                    android:clickable="true"
+                                    android:src="@mipmap/ic_camera_alt_black_48dp" />
+                            </FrameLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="@dimen/main_padding"
+                            android:layout_height="match_parent" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="8dp"
+                                android:gravity="center"
+                                android:text="Additional" />
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/photo_height">
+
+                                <Button
+                                    android:id="@+id/photo3_delete"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_gravity="top|right"
+                                    android:background="@color/delete_background"
+                                    android:text="X"
+                                    android:textColor="@color/red" />
+
+                                <ImageView
+                                    android:id="@+id/photo_3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/photo_height"
+                                    android:layout_weight="1"
+                                    android:background="@color/light"
+                                    android:clickable="true"
+                                    android:src="@mipmap/ic_camera_alt_black_48dp" />
+
+                            </FrameLayout>
+
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
             <!--Add FeedBack-->
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
@@ -46,39 +210,10 @@
                         android:layout_marginTop="@dimen/control_spacing">
 
                         <EditText
-                            android:id="@+id/full_name"
+                            android:id="@+id/title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Full Name"
-                            android:singleLine="true"
-                            android:textSize="@dimen/text_size" />
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/control_spacing">
-
-                        <EditText
-                            android:id="@+id/email"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Email"
-                            android:singleLine="true"
-                            android:textSize="@dimen/text_size" />
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/control_spacing">
-
-                        <EditText
-                            android:id="@+id/mobile"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Mobile"
+                            android:hint="Title"
                             android:singleLine="true"
                             android:textSize="@dimen/text_size" />
                     </android.support.design.widget.TextInputLayout>
@@ -93,7 +228,60 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:text="Source/Condo"
+                            android:text="Category"
+                            android:textColor="@color/jumbo"
+                            android:textSize="@dimen/text_size" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Spinner
+                            android:id="@+id/category"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="4dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="3px"
+                            android:layout_margin="6dp"
+                            android:background="@color/monsoon" />
+                    </LinearLayout>
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/control_spacing">
+
+                        <EditText
+                            android:id="@+id/remarks"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:gravity="top"
+                            android:hint="Remarks"
+                            android:inputType="textMultiLine"
+                            android:lines="3"
+                            android:maxLines="3"
+                            android:textSize="@dimen/text_size" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <!-- Submit this feedback to -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/main_padding"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Submit this feedback to"
                             android:textColor="@color/jumbo"
                             android:textSize="@dimen/text_size" />
                     </LinearLayout>
@@ -112,39 +300,185 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="3px"
-                            android:background="@color/monsoon"
-                            android:layout_margin="6dp"></View>
-
+                            android:layout_margin="6dp"
+                            android:background="@color/monsoon" />
                     </LinearLayout>
 
+                    <!-- Location -->
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/control_spacing">
 
                         <EditText
-                            android:id="@+id/address"
+                            android:id="@+id/location"
                             android:layout_width="match_parent"
-                            android:layout_height="150dp"
-                            android:gravity="top"
-                            android:hint="Address"
-                            android:inputType="textMultiLine"
-                            android:lines="3"
-                            android:maxLines="3"
+                            android:layout_height="wrap_content"
+                            android:hint="Location"
+                            android:singleLine="true"
                             android:textSize="@dimen/text_size" />
                     </android.support.design.widget.TextInputLayout>
+
+                    <!-- date / time -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/control_spacing">
+
+                                <EditText
+                                    android:id="@+id/date"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="On Which Day?"
+                                    android:singleLine="true"
+                                    android:textSize="@dimen/text_size" />
+                            </android.support.design.widget.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/control_spacing">
+
+                                <EditText
+                                    android:id="@+id/time"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="At What Time"
+                                    android:singleLine="true"
+                                    android:textSize="@dimen/text_size" />
+                            </android.support.design.widget.TextInputLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_padding"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Block"
+                                    android:textColor="@color/jumbo"
+                                    android:textSize="@dimen/text_size" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <Spinner
+                                    android:id="@+id/block"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingBottom="4dp" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="3px"
+                                    android:background="@color/monsoon" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_padding"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Storey"
+                                    android:textColor="@color/jumbo"
+                                    android:textSize="@dimen/text_size" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <Spinner
+                                    android:id="@+id/storey"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingBottom="4dp" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="3px"
+                                    android:background="@color/monsoon" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
 
             <Button
+                android:id="@+id/btn_send"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="@dimen/main_padding"
+                android:layout_marginRight="@dimen/main_padding"
+                android:background="@drawable/rounded_button"
+                android:text="Send This Feedback"
+                android:textColor="@color/white" />
+
+            <Button
                 android:id="@+id/btn_save"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_margin="@dimen/main_padding"
+                android:layout_marginTop="@dimen/control_spacing"
+                android:layout_marginLeft="@dimen/main_padding"
+                android:layout_marginRight="@dimen/main_padding"
                 android:background="@drawable/rounded_button"
-                android:text="Save"
+                android:text="Save To Draft"
                 android:textColor="@color/white" />
 
         </LinearLayout>
