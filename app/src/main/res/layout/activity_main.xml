@@ -7,11 +7,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -56,30 +58,54 @@
 
             </android.support.v7.widget.Toolbar>
 
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/main_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@mipmap/wallpaper" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="@dimen/control_spacing"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btn_send_feedback"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="@dimen/main_padding"
+                        android:background="@drawable/rounded_button"
+                        android:text="Add New Feedback"
+                        android:textColor="@color/white" />
+
+
+                    <Button
+                        android:id="@+id/btn_feed_back_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="@dimen/main_padding"
+                        android:background="@drawable/rounded_button"
+                        android:text="Track My Feedbacks"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+            </FrameLayout>
+
         </android.support.design.widget.AppBarLayout>
+
+
 
     </LinearLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <!--<ImageView-->l
-            <!--android:id="@+id/main_background"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:background="@color/base" />-->
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_gravity="center_vertical"-->
-            <!--android:layout_margin="@dimen/control_spacing"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:orientation="vertical">-->
-
-        <!--</LinearLayout>-->
-    </FrameLayout>
 
 
     <android.support.design.widget.NavigationView

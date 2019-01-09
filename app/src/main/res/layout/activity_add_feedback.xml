@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="@color/iron"
     android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    android:layout_marginBottom="16dp">
+    android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -27,10 +27,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
 
 
             <!--Picture Layout-->
+
+            <!--Add FeedBack-->
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,8 +48,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="14dp"
                         android:layout_marginTop="8dp"
+                        android:layout_marginBottom="14dp"
                         android:text="Photos Upload"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -75,69 +78,25 @@
                                 android:gravity="center"
                                 android:text="Photo 1" />
 
-                            <FrameLayout
+
+                            <ImageView
+                                android:id="@+id/photo_1"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/photo_height">
+                                android:layout_height="@dimen/photo_height"
+                                android:layout_weight="1"
+                                android:background="@color/light"
+                                android:clickable="true"
+                                android:src="@mipmap/ic_camera_alt_black_48dp" />
 
-                                <Button
-                                    android:id="@+id/photo1_delete"
-                                    android:layout_width="32dp"
-                                    android:layout_height="32dp"
-                                    android:layout_gravity="top|right"
-                                    android:background="@color/delete_background"
-                                    android:text="X"
-                                    android:textColor="@color/red" />
 
-                                <ImageView
-                                    android:id="@+id/photo_1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/photo_height"
-                                    android:layout_weight="1"
-                                    android:background="@color/light"
-                                    android:clickable="true"
-                                    android:src="@mipmap/ic_camera_alt_black_48dp" />
-                            </FrameLayout>
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="@dimen/main_padding"
-                            android:layout_height="match_parent" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
+                            <Button
+                                android:id="@+id/photo1_delete"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginBottom="8dp"
-                                android:gravity="center"
-                                android:text="Photo 1" />
-
-                            <FrameLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/photo_height">
-
-                                <Button
-                                    android:id="@+id/photo2_delete"
-                                    android:layout_width="32dp"
-                                    android:layout_height="32dp"
-                                    android:layout_gravity="top|right"
-                                    android:background="@color/delete_background"
-                                    android:text="X"
-                                    android:textColor="@color/red" />
-
-                                <ImageView
-                                    android:id="@+id/photo_2"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/photo_height"
-                                    android:layout_weight="1"
-                                    android:background="@color/light"
-                                    android:clickable="true"
-                                    android:src="@mipmap/ic_camera_alt_black_48dp" />
-                            </FrameLayout>
+                                android:layout_height="32dp"
+                                android:layout_gravity="top|right"
+                                android:background="@color/delete_background"
+                                android:text="X"
+                                android:textColor="@color/red" />
 
                         </LinearLayout>
 
@@ -156,33 +115,67 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginBottom="8dp"
                                 android:gravity="center"
-                                android:text="Additional" />
+                                android:text="Photo 2" />
 
-                            <FrameLayout
+
+                            <ImageView
+                                android:id="@+id/photo_2"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/photo_height">
-
-                                <Button
-                                    android:id="@+id/photo3_delete"
-                                    android:layout_width="32dp"
-                                    android:layout_height="32dp"
-                                    android:layout_gravity="top|right"
-                                    android:background="@color/delete_background"
-                                    android:text="X"
-                                    android:textColor="@color/red" />
-
-                                <ImageView
-                                    android:id="@+id/photo_3"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/photo_height"
-                                    android:layout_weight="1"
-                                    android:background="@color/light"
-                                    android:clickable="true"
-                                    android:src="@mipmap/ic_camera_alt_black_48dp" />
-
-                            </FrameLayout>
+                                android:layout_height="@dimen/photo_height"
+                                android:layout_weight="1"
+                                android:background="@color/light"
+                                android:clickable="true"
+                                android:src="@mipmap/ic_camera_alt_black_48dp" />
 
 
+                            <Button
+                                android:id="@+id/photo2_delete"
+                                android:layout_width="match_parent"
+                                android:layout_height="32dp"
+                                android:layout_gravity="top|right"
+                                android:background="@color/delete_background"
+                                android:text="X"
+                                android:textColor="@color/red" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="@dimen/main_padding"
+                            android:layout_height="match_parent" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="8dp"
+                                android:gravity="center"
+                                android:text="Photo 3" />
+
+
+                            <ImageView
+                                android:id="@+id/photo_3"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/photo_height"
+                                android:layout_weight="1"
+                                android:background="@color/light"
+                                android:clickable="true"
+                                android:src="@mipmap/ic_camera_alt_black_48dp" />
+
+
+                            <Button
+                                android:id="@+id/photo3_delete"
+                                android:layout_width="match_parent"
+                                android:layout_height="32dp"
+                                android:layout_gravity="top|right"
+                                android:background="@color/delete_background"
+                                android:text="X"
+                                android:textColor="@color/red" />
 
                         </LinearLayout>
 
@@ -192,7 +185,6 @@
 
             </android.support.v7.widget.CardView>
 
-            <!--Add FeedBack-->
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -204,19 +196,36 @@
                     android:layout_margin="@dimen/main_padding"
                     android:orientation="vertical">
 
-                    <android.support.design.widget.TextInputLayout
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/control_spacing">
+                        android:layout_height="match_parent">
 
-                        <EditText
-                            android:id="@+id/title"
+                        <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Title"
-                            android:singleLine="true"
-                            android:textSize="@dimen/text_size" />
-                    </android.support.design.widget.TextInputLayout>
+                            android:layout_marginTop="@dimen/control_spacing">
+
+                            <EditText
+                                android:id="@+id/title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Title"
+                                android:singleLine="true"
+                                android:textSize="@dimen/text_size" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/title_delete"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|right"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="8dp"
+                            android:text="X"
+                            android:textColor="@color/red"
+                            android:textStyle="bold" />
+
+                    </FrameLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -241,33 +250,50 @@
                         <Spinner
                             android:id="@+id/category"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="4dp" />
+                            android:layout_height="40dp"
+                            android:background="@drawable/spinner_background" />
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="3px"
-                            android:layout_margin="6dp"
-                            android:background="@color/monsoon" />
+                        <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="3px"-->
+                        <!--android:layout_margin="6dp"-->
+                        <!--android:background="@color/monsoon" />-->
                     </LinearLayout>
 
 
-                    <android.support.design.widget.TextInputLayout
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/control_spacing">
+                        android:layout_height="match_parent">
 
-                        <EditText
-                            android:id="@+id/remarks"
+                        <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
-                            android:layout_height="150dp"
-                            android:gravity="top"
-                            android:hint="Remarks"
-                            android:inputType="textMultiLine"
-                            android:lines="3"
-                            android:maxLines="3"
-                            android:textSize="@dimen/text_size" />
-                    </android.support.design.widget.TextInputLayout>
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/control_spacing">
+
+                            <EditText
+                                android:id="@+id/remarks"
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                android:gravity="top"
+                                android:hint="Remarks"
+                                android:inputType="textMultiLine"
+                                android:lines="3"
+                                android:maxLines="3"
+                                android:textSize="@dimen/text_size" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/remarks_delete"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|right"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="8dp"
+                            android:text="X"
+                            android:textColor="@color/red"
+                            android:textStyle="bold" />
+
+                    </FrameLayout>
 
                     <!-- Submit this feedback to -->
 
@@ -294,30 +320,76 @@
                         <Spinner
                             android:id="@+id/source"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
+                            android:background="@drawable/spinner_background"
                             android:paddingBottom="4dp" />
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="3px"
-                            android:layout_margin="6dp"
-                            android:background="@color/monsoon" />
+                        <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="3px"-->
+                        <!--android:layout_margin="6dp"-->
+                        <!--android:background="@color/monsoon" />-->
                     </LinearLayout>
 
-                    <!-- Location -->
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/control_spacing">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/main_padding"
+                    android:padding="5dp"
+                    android:background="@color/light"
+                    android:orientation="vertical">
 
-                        <EditText
-                            android:id="@+id/location"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Inaccurate address could cause delays in attending to your case." />
+
+                </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="top|left"
+                            android:paddingBottom="14dp"
+                            android:src="@mipmap/location_arrow" />
+
+
+                        <!-- Location -->
+                        <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Location"
-                            android:singleLine="true"
-                            android:textSize="@dimen/text_size" />
-                    </android.support.design.widget.TextInputLayout>
+                            android:layout_marginTop="@dimen/control_spacing">
+
+                            <EditText
+                                android:id="@+id/location"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint=" Where did you see it?"
+                                android:inputType="textMultiLine"
+                                android:lines="3"
+                                android:maxLines="3"
+                                android:paddingLeft="36dp"
+                                android:paddingRight="36dp"
+                                android:textSize="@dimen/text_size" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/location_delete"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top|right"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="8dp"
+                            android:text="X"
+                            android:textColor="@color/red"
+                            android:textStyle="bold" />
+
+                    </FrameLayout>
+
 
                     <!-- date / time -->
 
@@ -331,19 +403,32 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1">
 
-                            <android.support.design.widget.TextInputLayout
+                            <FrameLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/control_spacing">
+                                android:layout_height="match_parent">
 
-                                <EditText
-                                    android:id="@+id/date"
+                                <android.support.design.widget.TextInputLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:hint="On Which Day?"
-                                    android:singleLine="true"
-                                    android:textSize="@dimen/text_size" />
-                            </android.support.design.widget.TextInputLayout>
+                                    android:layout_marginTop="@dimen/control_spacing">
+
+                                    <EditText
+                                        android:id="@+id/date"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:hint="On Which Day?"
+                                        android:singleLine="true"
+                                        android:textSize="@dimen/text_size" />
+                                </android.support.design.widget.TextInputLayout>
+
+                                <ImageView
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_gravity="bottom|right"
+                                    android:paddingBottom="14dp"
+                                    android:src="@mipmap/ic_calendar" />
+
+                            </FrameLayout>
                         </LinearLayout>
 
                         <LinearLayout
@@ -351,19 +436,32 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1">
 
-                            <android.support.design.widget.TextInputLayout
+                            <FrameLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/control_spacing">
+                                android:layout_height="match_parent">
 
-                                <EditText
-                                    android:id="@+id/time"
+                                <android.support.design.widget.TextInputLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:hint="At What Time"
-                                    android:singleLine="true"
-                                    android:textSize="@dimen/text_size" />
-                            </android.support.design.widget.TextInputLayout>
+                                    android:layout_marginTop="@dimen/control_spacing">
+
+                                    <EditText
+                                        android:id="@+id/time"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:hint="At What Time"
+                                        android:singleLine="true"
+                                        android:textSize="@dimen/text_size" />
+                                </android.support.design.widget.TextInputLayout>
+
+                                <ImageView
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_gravity="bottom|right"
+                                    android:paddingBottom="14dp"
+                                    android:src="@mipmap/ic_clock" />
+
+                            </FrameLayout>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -377,88 +475,151 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                            <LinearLayout
+                            <android.support.design.widget.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/main_padding"
-                                android:orientation="horizontal">
+                                android:layout_marginTop="@dimen/control_spacing">
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:text="Block"
-                                    android:textColor="@color/jumbo"
-                                    android:textSize="@dimen/text_size" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <Spinner
+                                <EditText
                                     android:id="@+id/block"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:paddingBottom="4dp" />
+                                    android:hint="Block"
+                                    android:singleLine="true"
+                                    android:textSize="@dimen/text_size" />
+                            </android.support.design.widget.TextInputLayout>
 
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="3px"
-                                    android:background="@color/monsoon" />
-                            </LinearLayout>
-
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="[61, 63, .., 71, 73]" />
                         </LinearLayout>
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                            <LinearLayout
+                            <android.support.design.widget.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/main_padding"
-                                android:orientation="horizontal">
+                                android:layout_marginTop="@dimen/control_spacing"
+                                android:layout_weight="1">
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:text="Storey"
-                                    android:textColor="@color/jumbo"
-                                    android:textSize="@dimen/text_size" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <Spinner
+                                <EditText
                                     android:id="@+id/storey"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:paddingBottom="4dp" />
+                                    android:hint="Storey + Unit Number"
+                                    android:singleLine="true"
+                                    android:textSize="@dimen/text_size" />
+                            </android.support.design.widget.TextInputLayout>
 
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="3px"
-                                    android:background="@color/monsoon" />
-                            </LinearLayout>
-
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="[0101, 0109, B1, ...]" />
                         </LinearLayout>
+
+
+                        <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:orientation="vertical">-->
+
+                        <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginTop="@dimen/main_padding"-->
+                        <!--android:orientation="horizontal">-->
+
+                        <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="5dp"-->
+                        <!--android:text="Block"-->
+                        <!--android:textColor="@color/jumbo"-->
+                        <!--android:textSize="@dimen/text_size" />-->
+                        <!--</LinearLayout>-->
+
+                        <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="vertical">-->
+
+                        <!--<Spinner-->
+                        <!--android:id="@+id/block"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="40dp"-->
+                        <!--android:background="@drawable/spinner_background"-->
+                        <!--android:paddingBottom="4dp" />-->
+
+                        <!--&lt;!&ndash;<View&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="3px"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@color/monsoon" />&ndash;&gt;-->
+                        <!--</LinearLayout>-->
+
+                        <!--</LinearLayout>-->
+
+                        <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_weight="1"-->
+
+                        <!--android:orientation="vertical">-->
+
+                        <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginRight="4dp"-->
+                        <!--android:layout_marginTop="@dimen/main_padding"-->
+                        <!--android:orientation="horizontal">-->
+
+                        <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="5dp"-->
+                        <!--android:text="Storey"-->
+                        <!--android:textColor="@color/jumbo"-->
+                        <!--android:textSize="@dimen/text_size" />-->
+                        <!--</LinearLayout>-->
+
+                        <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="4dp"-->
+                        <!--android:orientation="vertical">-->
+
+                        <!--<Spinner-->
+                        <!--android:id="@+id/storey"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="40dp"-->
+                        <!--android:background="@drawable/spinner_background"-->
+
+                        <!--android:paddingBottom="4dp" />-->
+
+                        <!--&lt;!&ndash;<View&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="3px"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@color/monsoon" />&ndash;&gt;-->
+                        <!--</LinearLayout>-->
+
+                        <!--</LinearLayout>-->
+
 
                     </LinearLayout>
 
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
+
 
             <Button
                 android:id="@+id/btn_send"
@@ -474,8 +635,8 @@
                 android:id="@+id/btn_save"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="@dimen/control_spacing"
                 android:layout_marginLeft="@dimen/main_padding"
+                android:layout_marginTop="@dimen/control_spacing"
                 android:layout_marginRight="@dimen/main_padding"
                 android:background="@drawable/rounded_button"
                 android:text="Save To Draft"
@@ -488,3 +649,6 @@
 
 
 </LinearLayout>
+
+
+

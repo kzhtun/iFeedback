@@ -23,17 +23,17 @@
         <item
             android:id="@+id/create_fb"
             android:checked="false"
-            android:title="Create Feedback" />
+            android:title="Add New Feedback" />
 
         <item
             android:id="@+id/view_fb"
             android:checked="false"
-            android:title="View My Feedbacks" />
+            android:title="Track My Feedbacks" />
 
         <item
             android:id="@+id/view_draft"
             android:checked="false"
-            android:title="View My Drafts" />
+            android:title="Tack My Drafts" />
 
 
         <item
@@ -45,6 +45,12 @@
             android:id="@+id/support"
             android:checked="false"
             android:title="Support" />
+
+        <item
+            android:id="@+id/logout"
+            android:checked="false"
+            android:title="Logout"
+            android:visible="false"/>
 
     </group>
 

@@ -13,6 +13,12 @@ public class SourcesRes extends SugarRecord{
     public SourcesRes() {
     }
 
+    public SourcesRes(String sourcecode, String sourcename, String sourcetype) {
+        this.sourcecode = sourcecode;
+        this.sourcename = sourcename;
+        this.sourcetype = sourcetype;
+    }
+
     public String getSourcecode() {
         return sourcecode;
     }

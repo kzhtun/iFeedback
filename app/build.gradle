@@ -1,14 +1,17 @@
 apply plugin: 'com.android.application'
 
+
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
+    buildToolsVersion '28.0.3'
+
     defaultConfig {
         applicationId "com.info121.ifeedback"
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
@@ -16,11 +19,19 @@ android {
             // proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+
+    implementation 'io.nlopez.smartlocation:library:3.3.3'
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
 
     implementation 'net.hockeyapp.android:HockeySDK:5.1.0'
     implementation 'com.github.satyan:sugar:1.5'
@@ -36,6 +47,10 @@ dependencies {
     implementation "com.google.firebase:firebase-crash:$rootProject.ext.firebaseVer"
 
 
+    implementation 'com.squareup.picasso:picasso:2.3.4'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.daimajia.slider:library:1.1.5@aar'
+
     implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVer"
     implementation "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVer"
     implementation "com.android.support:cardview-v7:$rootProject.ext.supportLibraryVer"
@@ -43,10 +58,9 @@ dependencies {
     implementation "com.android.support:design:$rootProject.ext.supportLibraryVer"
     implementation "com.android.support:support-v4:$rootProject.ext.supportLibraryVer"
 
+
     implementation 'com.jakewharton:butterknife:8.8.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+
 }
-
-
-apply plugin: 'com.google.gms.google-services'

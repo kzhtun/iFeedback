@@ -10,4 +10,6 @@
     <dimen name="text_size_smaller">14sp</dimen>
     <dimen name="heading">20sp</dimen>
     <dimen name="btn_text_size">20sp</dimen>
+
+    <dimen name="photo_height">100dp</dimen>
 </resources>

@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -15,6 +18,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 
+import com.info121.ifeedback.App;
 import com.orm.query.Condition;
 import com.orm.query.Select;
 
@@ -30,6 +34,7 @@ import java.util.Locale;
 import java.util.regex.Pattern;
 
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 /**
@@ -160,6 +165,29 @@ public class Utils {
 //        return RequestBodyUtils.create(MEDIA_TYPE_MARKDOWN, inputStream);
 //    }
 
+    public static  String getCompleteAddressString(Context context) {
+        Location location = App.location;
+
+        String strAdd = "";
+        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+        try {
+            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+            if (addresses != null) {
+
+                strAdd = addresses.get(0).getFeatureName();
+                strAdd += ", " + addresses.get(0).getThoroughfare();
+                strAdd += ", " + addresses.get(0).getLocality();
+                strAdd += ", " + addresses.get(0).getCountryName();
+
+            } else {
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return strAdd;
+    }
+
     public static int getVersionCode(Context context) {
         int versionCode = -1;
         try {
@@ -193,6 +221,27 @@ public class Utils {
 //        return vList.get(0).getId();
 //
 //    }
+
+
+
+    public static RequestBody getTextRequestBody(String value) {
+        return RequestBody.create(MediaType.parse("text/plain"), value);
+    }
+
+    public static MultipartBody.Part getFileRequestBody(String fileName, String tagName) {
+        if (Utils.isNullOrEmpty(fileName)) return null;
+
+        File file = new File(Environment.getExternalStorageDirectory() + File.separator + App.App_Folder + File.separator + fileName);
+
+        RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
+
+        return MultipartBody.Part.createFormData(tagName, file.getName(), requestFile);
+
+    }
+
+
+
+
 
 
 

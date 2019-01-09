@@ -5,7 +5,7 @@ package com.info121.ifeedback.models;
 import com.google.gson.annotations.SerializedName;
 
 
-public class ProfileRes {
+public class UpdateProfileRes {
 
     @SerializedName("ID")
     private Long mID;

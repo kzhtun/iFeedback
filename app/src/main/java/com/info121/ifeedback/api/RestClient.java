@@ -28,6 +28,7 @@ public class RestClient {
     private static String AuthToken = "";
     private static RestClient instance1 = null;
     private static RestClient instance2 = null;
+    private static RestClient instance3 = null;
     private static int callCount = 10;
     private APIService service;
 
@@ -88,6 +89,15 @@ public class RestClient {
 
         }
         return instance2;
+    }
+
+
+    public static RestClient ICP() {
+        if (instance3 == null) {
+            instance3 = new RestClient(App.CONST_ICP_API_URL);
+
+        }
+        return instance3;
     }
 
 }
