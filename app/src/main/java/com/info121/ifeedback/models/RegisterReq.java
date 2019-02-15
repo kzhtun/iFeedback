@@ -8,6 +8,7 @@ public class RegisterReq {
     private String sourcecode;
     private String usertype;
     private String deviceid;
+    private String tokenid;
 
     public RegisterReq(String deviceid) {
         this.deviceid = deviceid;
@@ -67,5 +68,13 @@ public class RegisterReq {
 
     public void setDeviceid(String deviceid) {
         this.deviceid = deviceid;
+    }
+
+    public String getTokenid() {
+        return tokenid;
+    }
+
+    public void setTokenid(String tokenid) {
+        this.tokenid = tokenid;
     }
 }

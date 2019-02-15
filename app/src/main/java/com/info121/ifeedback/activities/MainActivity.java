@@ -16,8 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.info121.ifeedback.App;
 import com.info121.ifeedback.R;
+import com.info121.ifeedback.api.APIClient;
 import com.info121.ifeedback.models.UserProfileRes;
 import com.info121.ifeedback.utilities.Utils;
 
@@ -112,6 +114,14 @@ public class MainActivity extends AppCompatActivity  {
 
         if (!App.User_Name.isEmpty())
             mRegister.setVisible(false);
+       // else
+          //  APIClient.UpdateTokenID(App.DEVICE_ID, App.FCM_TOKEN);
+
+        // update token id
+      //  String FCM_TOKEN = FirebaseInstanceId.getInstance().getToken();
+      //  Log.e("Main ", "FCN Token" +  FCM_TOKEN);
+       // APIClient.UpdateTokenID(Utils.getDeviceID(mContext), FCM_TOKEN);
+
 
     }
 

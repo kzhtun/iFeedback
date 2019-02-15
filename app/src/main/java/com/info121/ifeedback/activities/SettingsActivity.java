@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 import com.info121.ifeedback.R;
 import com.info121.ifeedback.utilities.PrefDB;
+import com.info121.ifeedback.utilities.Utils;
 
 
 import butterknife.BindView;
@@ -36,29 +37,34 @@ public class SettingsActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        prefDB = new PrefDB(getApplicationContext());
+        prefDB = new PrefDB(SettingsActivity.this);
 
         mToolbar.setTitle("Settings");
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mCurrentIP.setText(prefDB.getString("CURRENT_IP"));
+
+        if (!Utils.isNullOrEmpty(prefDB.getString("CURRENT_IP"))) {
+            finish();
+            startActivity(new Intent(SettingsActivity.this, SplashActivity.class));
+            return;
+        }
     }
 
 
-
     @OnClick(R.id.btn_update)
-    public void BtnUpdateOnClick(){
+    public void BtnUpdateOnClick() {
         prefDB.putString("CURRENT_IP", mNewIP.getText().toString());
 
         AlertDialog alertDialog = new AlertDialog.Builder(SettingsActivity.this)
-           //     .setMessage("New IP has been saved. Data synchronization process may take some time.")
-                .setMessage("New IP has been saved. Please re-open the application.")
+                //     .setMessage("New IP has been saved. Data synchronization process may take some time.")
+                .setMessage("New IP has been saved. Application will load necessary data.")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                    finish();
-                    //startActivity(new Intent(SettingsActivity.this, SplashActivity.class));
+                        finish();
+                        startActivity(new Intent(SettingsActivity.this, SplashActivity.class));
 
                     }
                 }).create();

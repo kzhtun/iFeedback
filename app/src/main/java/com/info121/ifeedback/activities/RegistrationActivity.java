@@ -126,8 +126,10 @@ public class RegistrationActivity extends AbstractActivity {
             userReq.setSourcecode(mSource.getSelectedItem().toString());
             userReq.setUsertype("resident");
             userReq.setAddress(mAddress.getText().toString());
+            userReq.setTokenid(App.FCM_TOKEN);
 
-            APIClient.RegisterUser(userReq);
+            // APIClient.RegisterUser(userReq);
+            APIClient.ValidateRegistration(userReq.getUsername(), userReq.getEmail());
         }
     }
 
@@ -135,31 +137,54 @@ public class RegistrationActivity extends AbstractActivity {
         if (Utils.isNullOrEmpty(mFullName.getText().toString())) {
             mFullName.setError("Name should not be blank.");
             mFullName.setFocusable(true);
+            mFullName.requestFocus();
             return false;
         }
 
         if (Utils.isNullOrEmpty(mEmail.getText().toString())) {
-            mFullName.setError("Email should not be blank.");
-            mFullName.setFocusable(true);
+            mEmail.setError("Email should not be blank.");
+            mEmail.setFocusable(true);
+            mEmail.requestFocus();
             return false;
 
-        }else{
-            if(!Utils.isValidEmaillId(mEmail.getText().toString())){
-                mFullName.setError("Please type valid email.");
-                mFullName.setFocusable(true);
+        } else {
+            if (!Utils.isValidEmaillId(mEmail.getText().toString())) {
+                mEmail.setError("Please type valid email.");
+                mEmail.setFocusable(true);
+                mEmail.requestFocus();
                 return false;
             }
         }
 
         if (Utils.isNullOrEmpty(mMobile.getText().toString())) {
-            mFullName.setError("Mobile number should not be blank.");
-            mFullName.setFocusable(true);
+            mMobile.setError("Mobile number should not be blank.");
+            mMobile.setFocusable(true);
+            mMobile.requestFocus();
             return false;
         }
 
         return true;
     }
 
+
+    @Subscribe
+    public void onEvent(String message) {
+        if (message.equalsIgnoreCase("valid")) {
+            APIClient.RegisterUser(userReq);
+        }
+
+        if (message.equalsIgnoreCase("error: invalid user")) {
+            mFullName.setError("User name already exist.");
+            mFullName.setFocusable(true);
+            mFullName.requestFocus();
+        }
+
+        if (message.equalsIgnoreCase("error: invalid email")) {
+            mEmail.setError("Email already exist.");
+            mEmail.setFocusable(true);
+            mEmail.requestFocus();
+        }
+    }
 
     @Subscribe
     public void onEvent(RegisterRes res) {

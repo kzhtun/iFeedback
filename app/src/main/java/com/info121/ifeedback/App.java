@@ -1,12 +1,17 @@
 package com.info121.ifeedback;
 
 import android.location.Location;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.StrictMode;
+import android.util.Log;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.info121.ifeedback.api.APIClient;
 import com.info121.ifeedback.models.Block;
 import com.info121.ifeedback.models.CategoryRes;
 import com.info121.ifeedback.models.SourcesRes;
@@ -40,6 +45,9 @@ public class App extends SugarApp {
     public static List<Storey> StoreyList;
     public static List<CategoryRes> CategoryList;
 
+    public static Uri DEFAULT_SOUND_URI = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+    public static Uri NOTIFICATION_SOUND_URI = null;
+    public static Uri PROMINENT_SOUND_URI = null;
 
     public static String Source_Name = "";
     public static String User_Name = "";
@@ -52,12 +60,26 @@ public class App extends SugarApp {
     public static Runnable mRunnable;
     public static final Handler mHandler = new Handler();
 
+    public static String FCM_TOKEN = "";
+    public static String DEVICE_ID = "";
+
     @Override
     public void onCreate() {
         super.onCreate();
 
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+
+        FCM_TOKEN = FirebaseInstanceId.getInstance().getToken();
+
+
+        DEVICE_ID = Utils.getDeviceID(getApplicationContext());
+        Log.e("APP", "FCN Token" +  FCM_TOKEN);
+
+        Log.e("DEVICE ID: ", DEVICE_ID);
+
+
 
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.ITEM_ID, Utils.getDeviceID(this));
@@ -68,6 +90,10 @@ public class App extends SugarApp {
         PrefDB prefDB = new PrefDB(getApplicationContext());
 
         //prefDB.putString("CURRENT_IP", "alexisinfo121.noip.me:81");
+
+
+        prefDB.putString("CURRENT_IP", "118.200.199.248:81");
+
 
         User_Name = prefDB.getString("USERNAME");
         Profile_Code = prefDB.getString("PROFILECODE");

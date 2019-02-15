@@ -13,6 +13,7 @@ import com.info121.ifeedback.models.SourcesRes;
 import com.info121.ifeedback.models.SourcesTypeRes;
 import com.info121.ifeedback.models.Storey;
 import com.info121.ifeedback.models.UserProfileRes;
+import com.info121.ifeedback.utilities.Utils;
 
 
 import java.util.List;
@@ -168,5 +169,18 @@ public class APIClient {
         });
     }
 
+
+
+    public static void UpdateTokenID(String deviceId, String tokenId) {
+        Call<String> call = RestClient.IFB().getApiService().updateTokenId(deviceId, tokenId);
+        call.enqueue(new APICallback<String>() {
+        });
+    }
+
+    public static void ValidateRegistration(String username, String email) {
+        Call<String> call = RestClient.IFB().getApiService().validateRegistration(username, email);
+        call.enqueue(new APICallback<String>() {
+        });
+    }
 
 }

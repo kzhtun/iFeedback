@@ -707,7 +707,7 @@ public class AddFeedbackActivity extends AbstractActivity implements OnLocationU
 //        feedBack.setStorey(mStorey.getSelectedItem().toString());
 
         feedBack.setBlockno(mBlock.getText().toString());
-        feedBack.setStorey(mBlock.getText().toString());
+        feedBack.setStorey(mStorey.getText().toString());
 
     }
 

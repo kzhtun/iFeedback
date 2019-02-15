@@ -46,6 +46,9 @@ public class SplashActivity extends AbstractActivity {
                 }
             }
         }
+
+
+
         return true;
     }
 
@@ -56,17 +59,6 @@ public class SplashActivity extends AbstractActivity {
 
         ButterKnife.bind(this);
         prefDB = new PrefDB(getApplicationContext());
-
-        if (Utils.isNullOrEmpty(prefDB.getString("CURRENT_IP"))) {
-            finish();
-            startActivity(new Intent(SplashActivity.this, SettingsActivity.class));
-            return;
-        } else {
-
-            App.CONST_ICP_API_URL = App.CONST_ICP_URL_TEMPLATE.replace("{IPADDRESS}", prefDB.getString("CURRENT_IP"));
-            App.CONST_REST_API_URL = App.CONST_REST_API_URL_TEMPLATE.replace("{IPADDRESS}", prefDB.getString("CURRENT_IP"));
-            App.CONST_PHOTO_UPLOAD_URL = App.CONST_PHOTO_UPLOAD_TEMPLATE.replace("{IPADDRESS}", prefDB.getString("CURRENT_IP"));
-        }
 
 
         if (!hasPermissions(this, PERMISSIONS)) {
@@ -85,6 +77,22 @@ public class SplashActivity extends AbstractActivity {
 //            // Load Source List
 //            APIClient.GetSourcesList();
 //        }
+
+
+
+    }
+
+
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (requestCode == 1 && grantResults[0] != -1 && grantResults[1] != -1) {
+            prefDB = new PrefDB(getApplicationContext());
+
+            App.CONST_ICP_API_URL = App.CONST_ICP_URL_TEMPLATE.replace("{IPADDRESS}", prefDB.getString("CURRENT_IP"));
+            App.CONST_REST_API_URL = App.CONST_REST_API_URL_TEMPLATE.replace("{IPADDRESS}", prefDB.getString("CURRENT_IP"));
+            App.CONST_PHOTO_UPLOAD_URL = App.CONST_PHOTO_UPLOAD_TEMPLATE.replace("{IPADDRESS}", prefDB.getString("CURRENT_IP"));
+
+            APIClient.GetSourcesTypeList();
+        }
     }
 
 
@@ -107,22 +115,41 @@ public class SplashActivity extends AbstractActivity {
             App.SourcesList.addAll((List<SourcesRes>) res);
 
 
-            APIClient.GetBlockList();
-
-        }
-
-
-        if (res.get(0) instanceof SourcesRes) {
-
-            //prefDB.putBoolean("SYNCHONIZED", true);
-            App.SourcesList = new ArrayList<>();
-            App.SourcesList.add(new SourcesRes("", "", ""));
-            App.SourcesList.addAll((List<SourcesRes>) res);
-
+           // APIClient.GetBlockList();
 
             APIClient.GetCategoryList();
 
         }
+
+
+//        if (res.get(0) instanceof Block) {
+//            App.BlockList = new ArrayList<>();
+//            App.BlockList.add(new Block(""));
+//            App.BlockList.addAll((List<Block>) res);
+//
+//
+//            finish();
+//
+//            if (App.User_Name.isEmpty()) {
+//                startActivity(new Intent(SplashActivity.this, RegistrationActivity.class));
+//            } else {
+//                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+//
+//            }
+//        }
+
+
+//        if (res.get(0) instanceof SourcesRes) {
+//
+//            //prefDB.putBoolean("SYNCHONIZED", true);
+//            App.SourcesList = new ArrayList<>();
+//            App.SourcesList.add(new SourcesRes("", "", ""));
+//            App.SourcesList.addAll((List<SourcesRes>) res);
+//
+//
+//
+//
+//        }
 
 
         if (res.get(0) instanceof CategoryRes) {
@@ -146,21 +173,7 @@ public class SplashActivity extends AbstractActivity {
         }
 
 
-        if (res.get(0) instanceof Block) {
-            App.BlockList = new ArrayList<>();
-            App.BlockList.add(new Block(""));
-            App.BlockList.addAll((List<Block>) res);
 
-
-            finish();
-
-            if (App.User_Name.isEmpty()) {
-                startActivity(new Intent(SplashActivity.this, RegistrationActivity.class));
-            } else {
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
-
-            }
-        }
 
 
     }

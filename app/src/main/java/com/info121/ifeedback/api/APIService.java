@@ -60,6 +60,13 @@ public interface APIService {
     @GET("getUserProfile/{code}")
     Call<UserProfileRes> getUserProfile(@Path("code") String code);
 
+    @GET("updatetokenid/{deviceId},{tokenId}")
+    Call<String> updateTokenId(@Path("deviceId") String deviceId, @Path("tokenId") String tokenId);
+
+    @GET("validateregistration/{username},{email}")
+    Call<String> validateRegistration(@Path("username") String deviceId, @Path("email") String tokenId);
+
+
 
     @Multipart
     @POST("userprofile")
