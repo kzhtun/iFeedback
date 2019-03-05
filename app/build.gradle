@@ -10,7 +10,7 @@ android {
         applicationId "com.info121.ifeedback"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 1
+        versionCode 3
         versionName "1.0"
 
     }

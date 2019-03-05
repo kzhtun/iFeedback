@@ -80,7 +80,6 @@ public class App extends SugarApp {
         Log.e("DEVICE ID: ", DEVICE_ID);
 
 
-
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.ITEM_ID, Utils.getDeviceID(this));
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, Utils.getDeviceName());

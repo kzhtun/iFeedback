@@ -166,7 +166,7 @@ public class AddFeedbackActivity extends AbstractActivity implements OnLocationU
         populateSources();
         // populateSourcesType();
         populateCategory();
-   //     populateBlock();
+        //     populateBlock();
 
 //        storeyAdapter = new ArrayAdapter<>(mContext, R.layout.support_simple_spinner_dropdown_item, new ArrayList<Storey>());
 //        mStorey.setAdapter(storeyAdapter);
@@ -400,12 +400,6 @@ public class AddFeedbackActivity extends AbstractActivity implements OnLocationU
         showSelectDialog(3);
     }
 
-    private Drawable getPhotoUri(String photoName) {
-        File file = new File(Environment.getExternalStorageDirectory() + File.separator + "vcms" + File.separator + photoName);
-
-        return Drawable.createFromPath(file.getAbsolutePath());
-
-    }
 
     void openCamera(final int requestCode) {
         this.runOnUiThread(new Runnable() {
@@ -467,9 +461,7 @@ public class AddFeedbackActivity extends AbstractActivity implements OnLocationU
             }
         }
 
-        switch (requestCode)
-
-        {
+        switch (requestCode) {
             case REQ_PHOTO_1:
                 mPhoto1.setImageBitmap(photo);
                 mPhoto1.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -734,13 +726,13 @@ public class AddFeedbackActivity extends AbstractActivity implements OnLocationU
         }
 
 
-        if(!TextUtils.isDigitsOnly(mBlock.getText())){
+        if (!TextUtils.isDigitsOnly(mBlock.getText())) {
             mBlock.setError("Block number should only be numeric.");
             mBlock.setFocusable(true);
             return false;
         }
 
-        if(mBlock.getText().length()>4){
+        if (mBlock.getText().length() > 4) {
             mBlock.setError("Invalid block number");
             mBlock.setFocusable(true);
             return false;
@@ -753,15 +745,15 @@ public class AddFeedbackActivity extends AbstractActivity implements OnLocationU
             return false;
         }
 
-        if(!TextUtils.isDigitsOnly(mStorey.getText()) ) {
-            if(!mStorey.getText().toString().equalsIgnoreCase("B1") ) {
+        if (!TextUtils.isDigitsOnly(mStorey.getText())) {
+            if (!mStorey.getText().toString().equalsIgnoreCase("B1")) {
                 mStorey.setError("Storey number should only be numeric or B1");
                 mStorey.setFocusable(true);
                 return false;
             }
         }
 
-        if(mStorey.getText()!="B1" && mBlock.getText().length() > 4 ) {
+        if (mStorey.getText() != "B1" && mBlock.getText().length() > 4) {
             mStorey.setError("Invalid storey number");
             mStorey.setFocusable(true);
             return false;
@@ -839,7 +831,8 @@ public class AddFeedbackActivity extends AbstractActivity implements OnLocationU
             String message;
 
             if (isDraftSave)
-                message = " Your feed back has been saved to draft.\n Your reference Feedback #\" + res.getID() + \". \\n Would you like to submit another?";
+
+                message = " Your feed back has been saved to draft.\n Your reference Feedback #" + res.getID() + ". \n Would you like to submit another?";
             else
                 message = " Your feedback has been sent.\n Your reference Feedback #" + res.getID() + ". \n Would you like to submit another?";
 

@@ -95,7 +95,7 @@ public class Utils {
     }
 
     public static String trimSpaces(String text) {
-        return text.replaceAll("\\s+","");
+        return text.replaceAll("\\s+", "");
     }
 
     public static long convertDateStringToInt(String dateString) {
@@ -142,7 +142,7 @@ public class Utils {
         }
     }
 
-    public static Drawable getDrawable(String photoName){
+    public static Drawable getDrawable(String photoName) {
         File file = new File(Environment.getExternalStorageDirectory() + File.separator + "vcms" + File.separator + photoName);
 
         return Drawable.createFromPath(file.getAbsolutePath());
@@ -165,7 +165,7 @@ public class Utils {
 //        return RequestBodyUtils.create(MEDIA_TYPE_MARKDOWN, inputStream);
 //    }
 
-    public static  String getCompleteAddressString(Context context) {
+    public static String getCompleteAddressString(Context context) {
         Location location = App.location;
 
         String strAdd = "";
@@ -201,7 +201,7 @@ public class Utils {
     }
 
     public static String getVersionName(Context context) {
-        String versionName ="";
+        String versionName = "";
         try {
             PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             versionName = packageInfo.versionName;
@@ -223,7 +223,6 @@ public class Utils {
 //    }
 
 
-
     public static RequestBody getTextRequestBody(String value) {
         return RequestBody.create(MediaType.parse("text/plain"), value);
     }
@@ -231,18 +230,18 @@ public class Utils {
     public static MultipartBody.Part getFileRequestBody(String fileName, String tagName) {
         if (Utils.isNullOrEmpty(fileName)) return null;
 
-        File file = new File(Environment.getExternalStorageDirectory() + File.separator + App.App_Folder + File.separator + fileName);
+        File file = null;
+
+        if (fileName.contains("storage/"))
+            file = new File(fileName);
+        else
+            file = new File(Environment.getExternalStorageDirectory() + File.separator + App.App_Folder + File.separator + fileName);
 
         RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
 
         return MultipartBody.Part.createFormData(tagName, file.getName(), requestFile);
 
     }
-
-
-
-
-
 
 
 }

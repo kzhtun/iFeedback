@@ -16,10 +16,10 @@
     <application
         android:name=".App"
         android:allowBackup="false"
-        android:icon="@mipmap/icon_feedback"
+        android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:roundIcon="@mipmap/icon_feedback"
+        android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.SettingsActivity">
