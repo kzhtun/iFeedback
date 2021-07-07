@@ -53,6 +53,8 @@ public interface APIService {
     @GET("getFeedbackDetails/{id}")
     Call<FeedbackDetail> getFeedbackDetail(@Path("id") String id);
 
+    @GET("getUserProfileByDeviceID/{deviceId}")
+    Call<UserProfileRes> getUserProfileByDeviceID(@Path("deviceId") String deviceId);
 
     @POST("registerUserProfile")
     Call<RegisterRes> registerUser(@Body RegisterReq userReq);

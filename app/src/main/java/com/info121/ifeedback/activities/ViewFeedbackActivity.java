@@ -1,15 +1,24 @@
 package com.info121.ifeedback.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.info121.ifeedback.AbstractActivity;
 import com.info121.ifeedback.R;
@@ -67,9 +76,17 @@ public class ViewFeedbackActivity extends AbstractActivity {
     @BindView(R.id.remarks)
     TextView mRemarks;
 
-//    @BindView(R.id.slider)
-//    SliderLayout mDemoSlider;
+    @BindView(R.id.slider)
+    SliderLayout mDemoSlider;
 
+    @BindView(R.id.no_photo)
+    ImageView mNoPhoto;
+
+    @BindView(R.id.frameLayout)
+    FrameLayout mFrameLayout;
+
+    @BindView(R.id.overlay)
+    View mOverLay;
 
     Context mContext;
     HashMap<String, String> url_maps = new HashMap<String, String>();
@@ -85,14 +102,15 @@ public class ViewFeedbackActivity extends AbstractActivity {
 
         APIClient.GetFeedbackDetail(getIntent().getStringExtra(ID));
 
+
     }
 
     private void initializeControls() {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar = findViewById(R.id.toolbar);
 
         mContext = ViewFeedbackActivity.this;
 
-        mToolbar.setTitle("Feedback Detail") ;
+        mToolbar.setTitle("Feedback Detail");
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -105,7 +123,7 @@ public class ViewFeedbackActivity extends AbstractActivity {
     }
 
     private void populateFeedbackDetail(FeedbackDetail fb) {
-        mToolbar.setTitle("Feedback Detail #" + fb.getId()) ;
+        mToolbar.setTitle("Feedback Detail #" + fb.getId());
 
         mTitle.setText(fb.getTitle());
         mFeedback.setText(fb.getFeedback());
@@ -123,37 +141,67 @@ public class ViewFeedbackActivity extends AbstractActivity {
         mSubmitDateTime.setText(fb.getSentat());
         mRemarks.setText(fb.getSourceremarks());
 
-//        if (!fb.getPic1().isEmpty())
-//            url_maps.put("Photo 1", fb.getPic1());
-//
-//        if (!fb.getPic2().isEmpty())
-//            url_maps.put("Photo 2", fb.getPic2());
-//
-//        if (!fb.getPic3().isEmpty())
-//            url_maps.put("Photo 3", fb.getPic3());
-//
-//
-//        for (String name : url_maps.keySet()) {
-//            TextSliderView textSliderView = new TextSliderView(this);
-//            // initialize a SliderLayout
-//            textSliderView
-//                    .description(name)
-//                    .image(url_maps.get(name))
-//                    .setScaleType(BaseSliderView.ScaleType.Fit);
-//
-//
-//            //add your extra information
-//            textSliderView.bundle(new Bundle());
-//            textSliderView.getBundle()
-//                    .putString("extra", name);
-//
-//            mDemoSlider.addSlider(textSliderView);
-//        }
-//        mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
-//        mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-//        mDemoSlider.setCustomAnimation(new DescriptionAnimation());
-//        mDemoSlider.setDuration(4000);
 
+        if (!fb.getPic1().isEmpty())
+            url_maps.put("Photo 1", getPhotoUrl(fb.getPic1()));
+
+        if (!fb.getPic2().isEmpty())
+            url_maps.put("Photo 2", getPhotoUrl(fb.getPic2()));
+
+        if (!fb.getPic3().isEmpty())
+            url_maps.put("Photo 3", getPhotoUrl(fb.getPic3()));
+
+        if (url_maps.size() > 0)
+            mNoPhoto.setVisibility(View.GONE);
+
+        for (String name : url_maps.keySet()) {
+            TextSliderView textSliderView = new TextSliderView(this);
+            // initialize a SliderLayout
+            textSliderView
+                    .description(name)
+                    .image(url_maps.get(name))
+                    .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
+                        @Override
+                        public void onSliderClick(BaseSliderView slider) {
+
+                        }
+                    })
+                    .setScaleType(BaseSliderView.ScaleType.Fit);
+
+
+            //add your extra information
+            textSliderView.bundle(new Bundle());
+            textSliderView.getBundle()
+                    .putString("extra", name);
+
+            mDemoSlider.addSlider(textSliderView);
+        }
+        mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
+        mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        mDemoSlider.setCustomAnimation(new DescriptionAnimation());
+        mDemoSlider.setDuration(4000);
+
+
+
+
+
+        mOverLay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewFeedbackActivity.this, PhotoDetailActivity.class);
+                String url = null;
+                intent.putExtra("PHOTO_URL", mDemoSlider.getCurrentSlider().getUrl());
+                startActivity(intent);
+            }
+        });
+
+
+    }
+
+    private String getPhotoUrl(String url) {
+        String[] urls = url.split("/");
+
+        return "http://alexisinfo121.noip.me:81/ifeedbackresx/" + urls[urls.length - 1];
     }
 
     @Override

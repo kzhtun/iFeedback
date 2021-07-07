@@ -1,17 +1,20 @@
 package com.info121.ifeedback.services;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioAttributes;
+import android.net.Uri;
 
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.content.ContextCompat;
 
 import com.google.firebase.messaging.RemoteMessage;
 import com.info121.ifeedback.App;
 import com.info121.ifeedback.R;
-import com.info121.ifeedback.activities.MainActivity;
+import com.info121.ifeedback.activities.ViewFeedbackActivity;
 
 
 /**
@@ -24,31 +27,58 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
     public final String text = "";
 
 
-    private void showNotification(String title, String messageBody) {
+    String OLD_CH = "";
+    String NEW_CH = "";
 
-        Intent intent = new Intent(this, MainActivity.class);
+    private void showNotification(String title, String body,  String fbid) {
+        OLD_CH  = App.getOldChannelId();
+        NEW_CH = App.getNewChannelId();
+
+        Intent intent = new Intent(this, ViewFeedbackActivity.class);
+        intent.putExtra("ID", fbid);
+
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
-                PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+        Uri soundUri = App.getNotificationSoundUri();
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NEW_CH)
                 .setSmallIcon(R.mipmap.app_icon)
                 .setContentTitle(title)
-                .setContentText(messageBody)
+                .setContentText(body)
                 .setAutoCancel(true)
-                .setSound(App.NOTIFICATION_SOUND_URI)
-                .setContentIntent(pendingIntent)
-                .setColor(ContextCompat.getColor(this, R.color.red))
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-               // .setDefaults(Notification.DEFAULT_ALL)
-                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
-
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                .setSound(soundUri)
+                .setContentIntent(pendingIntent);
 
 
-        notificationManager.notify(0, notificationBuilder.build());
 
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            if (soundUri != null) {
+                // Changing Default mode of notification
+                notificationBuilder.setDefaults(Notification.DEFAULT_VIBRATE);
+                // Creating an Audio Attribute
+                AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                        .setUsage(AudioAttributes.USAGE_ALARM)
+                        .build();
+
+
+//                //it will delete existing channel if it exists
+                if (mNotificationManager.getNotificationChannel(OLD_CH) != null) {
+                    mNotificationManager.deleteNotificationChannel(OLD_CH);
+                }
+
+                // Creating Channel
+                NotificationChannel notificationChannel = new NotificationChannel(NEW_CH, NEW_CH, NotificationManager.IMPORTANCE_HIGH);
+
+                notificationChannel.enableLights(true);
+                notificationChannel.enableVibration(true);
+                notificationChannel.setSound(soundUri, audioAttributes);
+                mNotificationManager.createNotificationChannel(notificationChannel);
+            }
+        }
+
+        mNotificationManager.notify(0, notificationBuilder.build());
     }
 
 
@@ -57,9 +87,10 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
         if (remoteMessage.getData() != null) {
 
-            if (remoteMessage.getData().size() == 2) {
-                showNotification(remoteMessage.getData().get("title"), remoteMessage.getData().get("body"));
-            }
+
+                showNotification(remoteMessage.getData().get("title"), remoteMessage.getData().get("body"),  remoteMessage.getData().get("fbid"));
+
+
 
 //            if (remoteMessage.getData().size() == 4) {
 //                showDialog(remoteMessage.getData().get("jobNo"),
@@ -75,42 +106,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
     }
 
 
-//    public void showDialog(String jobNo, String name, String phone, String displayMessage) {
-//        Intent intent = new Intent(this, ShowDialogService.class);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//
-//        PendingIntent pendingIntent = PendingIntent.getService(this, 0 /* Request code */, intent,
-//                PendingIntent.FLAG_ONE_SHOT);
-//
-//        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-//                .setSmallIcon(R.mipmap.my_limo_launcher)
-//                .setContentTitle("Tita Limo")
-//                .setContentText("New job received")
-//                .setAutoCancel(true)
-//                .setSound(App.PROMINENT_SOUND_URI)
-//                .setContentIntent(pendingIntent)
-//                .setColor(ContextCompat.getColor(this, R.color.red))
-//                .setPriority(NotificationCompat.PRIORITY_HIGH)
-//             //   .setDefaults(Notification.DEFAULT_ALL)
-//                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
-//
-//        NotificationManager notificationManager =
-//                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//
-//        notificationManager.notify(0, notificationBuilder.build());
-//        notificationManager.cancel(0);
-//
-//
-//        Bundle bundle = new Bundle();
-//
-//        bundle.putString(ShowDialogService.JOB_NO, jobNo);
-//        bundle.putString(ShowDialogService.NAME, name);
-//        bundle.putString(ShowDialogService.PHONE, phone);
-//        bundle.putString(ShowDialogService.MESSAGE, displayMessage);
-//
-//        intent.putExtras(bundle);
-//        startService(intent);
-//    }
+
 
     @Override
     public void onDeletedMessages() {

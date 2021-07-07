@@ -77,6 +77,12 @@ public class APIClient {
         });
     }
 
+    public static void GetUserProfileByDeviceID(String deviceId) {
+        Call<UserProfileRes> call = RestClient.IFB().getApiService().getUserProfileByDeviceID(deviceId);
+        call.enqueue(new APICallback<UserProfileRes>() {
+        });
+    }
+
     public static void RegisterUser(RegisterReq userReq) {
         Call<RegisterRes> call = RestClient.IFB().getApiService().registerUser(userReq);
         call.enqueue(new APICallback<RegisterRes>() {

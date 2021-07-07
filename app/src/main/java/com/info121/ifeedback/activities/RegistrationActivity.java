@@ -9,12 +9,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.crashlytics.android.Crashlytics;
 import com.info121.ifeedback.AbstractActivity;
 import com.info121.ifeedback.App;
 import com.info121.ifeedback.R;
@@ -32,6 +35,7 @@ import java.io.File;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.fabric.sdk.android.Fabric;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -84,6 +88,12 @@ public class RegistrationActivity extends AbstractActivity {
 
 
         prefDB = new PrefDB(getApplicationContext());
+
+        Fabric.with(this, new Crashlytics());
+
+//        InputMethodManager imeManager = (InputMethodManager) getApplicationContext().getSystemService(INPUT_METHOD_SERVICE);
+//        imeManager.showInputMethodPicker();
+
     }
 
     private void initializeControls() {

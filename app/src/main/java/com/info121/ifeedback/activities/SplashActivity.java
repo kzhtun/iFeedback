@@ -18,6 +18,7 @@ import com.info121.ifeedback.models.Block;
 import com.info121.ifeedback.models.CategoryRes;
 import com.info121.ifeedback.models.SourcesRes;
 import com.info121.ifeedback.models.SourcesTypeRes;
+import com.info121.ifeedback.models.UserProfileRes;
 import com.info121.ifeedback.utilities.PrefDB;
 import com.info121.ifeedback.utilities.Utils;
 
@@ -47,8 +48,6 @@ public class SplashActivity extends AbstractActivity {
             }
         }
 
-
-
         return true;
     }
 
@@ -77,7 +76,6 @@ public class SplashActivity extends AbstractActivity {
 //            // Load Source List
 //            APIClient.GetSourcesList();
 //        }
-
 
 
     }
@@ -115,7 +113,7 @@ public class SplashActivity extends AbstractActivity {
             App.SourcesList.addAll((List<SourcesRes>) res);
 
 
-           // APIClient.GetBlockList();
+            // APIClient.GetBlockList();
 
             APIClient.GetCategoryList();
 
@@ -160,12 +158,13 @@ public class SplashActivity extends AbstractActivity {
             App.CategoryList.addAll((List<CategoryRes>) res);
 
 
-          //  APIClient.GetBlockList();
+            //  APIClient.GetBlockList();
 
-            finish();
+            //   finish();
 
             if (App.User_Name.isEmpty()) {
-                startActivity(new Intent(SplashActivity.this, RegistrationActivity.class));
+                APIClient.GetUserProfileByDeviceID(App.DEVICE_ID);
+
             } else {
                 startActivity(new Intent(SplashActivity.this, MainActivity.class));
             }
@@ -173,9 +172,22 @@ public class SplashActivity extends AbstractActivity {
         }
 
 
+    }
 
+    @Subscribe
+    public void onEvent(UserProfileRes res) {
 
+        if (res.getUsername().isEmpty()) {
+            startActivity(new Intent(SplashActivity.this, RegistrationActivity.class));
+        } else {
+            App.User_Name = res.getUsername();
+            App.Profile_Code = res.getProfilecode();
 
+            prefDB.putString("USERNAME", App.User_Name);
+            prefDB.putString("PROFILECODE", App.Profile_Code);
+
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        }
     }
 
     @Subscribe
@@ -192,8 +204,5 @@ public class SplashActivity extends AbstractActivity {
         alertDialog.show();
     }
 
-    private void startApp() {
-
-    }
 
 }

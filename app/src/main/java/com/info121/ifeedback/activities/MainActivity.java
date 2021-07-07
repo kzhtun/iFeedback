@@ -14,8 +14,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.info121.ifeedback.App;
 import com.info121.ifeedback.R;
@@ -30,6 +33,7 @@ import java.util.Calendar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.fabric.sdk.android.Fabric;
 import io.nlopez.smartlocation.OnLocationUpdatedListener;
 import io.nlopez.smartlocation.SmartLocation;
 import io.nlopez.smartlocation.location.providers.LocationGooglePlayServicesProvider;
@@ -121,6 +125,12 @@ public class MainActivity extends AppCompatActivity  {
       //  String FCM_TOKEN = FirebaseInstanceId.getInstance().getToken();
       //  Log.e("Main ", "FCN Token" +  FCM_TOKEN);
        // APIClient.UpdateTokenID(Utils.getDeviceID(mContext), FCM_TOKEN);
+
+//        Crashlytics.getInstance().crash();
+
+        Fabric.with(this, new Crashlytics());
+
+
 
 
     }
