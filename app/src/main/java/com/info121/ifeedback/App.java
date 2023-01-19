@@ -10,7 +10,7 @@ import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.crashlytics.android.Crashlytics;
+////import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -26,7 +26,7 @@ import com.info121.ifeedback.utilities.PrefDB;
 import com.info121.ifeedback.utilities.Utils;
 import com.orm.SugarApp;
 
-import io.fabric.sdk.android.Fabric;
+////import io.fabric.sdk.android.Fabric;
 import java.io.File;
 import java.util.List;
 
@@ -79,7 +79,7 @@ public class App extends SugarApp {
         super.onCreate();
 
 
-       // Fabric.with(this, new Crashlytics());
+       // //Fabric.with(this, new Crashlytics());
 
         // Obtain the FirebaseAnalytics instance.
       //  mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -119,7 +119,8 @@ public class App extends SugarApp {
 
 
      //   prefDB.putString("CURRENT_IP", "118.200.199.248:81");
-        prefDB.putString("CURRENT_IP", "alexisinfo121.noip.me");
+
+       prefDB.putString("CURRENT_IP", "alexisinfo121.noip.me");
 
         User_Name = prefDB.getString("USERNAME");
         Profile_Code = prefDB.getString("PROFILECODE");

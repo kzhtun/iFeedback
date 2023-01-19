@@ -30,7 +30,7 @@ public class FeedbackListActivity extends AbstractActivity {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
-    @BindView(R.id.rv_feeback)
+    @BindView(R.id.rv_feedback)
     RecyclerView mRecyclerView;
 
     List<Feedback> sentFeedbackList;

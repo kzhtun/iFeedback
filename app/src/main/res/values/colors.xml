@@ -6,7 +6,8 @@
     <color name="whiteTransparent">#b9ffffff</color>
     <color name="tint">#00eaff</color>
     <color name="bg">#c0ffffff</color>
-    <color name="card_bg">#d6ffd8</color>
+    <color name="card_bg_bk">#d6ffd8</color>
+    <color name="card_bg">#B4C1C7</color>
     <color name="text_color">#474747</color>
 
     <color name="edit_titlebar">#E88800</color>

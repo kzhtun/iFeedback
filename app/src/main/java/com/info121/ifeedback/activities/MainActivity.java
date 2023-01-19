@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.crashlytics.android.Crashlytics;
+////import com.crashlytics.android.Crashlytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.info121.ifeedback.App;
 import com.info121.ifeedback.R;
@@ -33,7 +33,7 @@ import java.util.Calendar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.fabric.sdk.android.Fabric;
+////import io.fabric.sdk.android.Fabric;
 import io.nlopez.smartlocation.OnLocationUpdatedListener;
 import io.nlopez.smartlocation.SmartLocation;
 import io.nlopez.smartlocation.location.providers.LocationGooglePlayServicesProvider;
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity  {
 
 //        Crashlytics.getInstance().crash();
 
-        Fabric.with(this, new Crashlytics());
+       // //Fabric.with(this, new Crashlytics());
 
 
 

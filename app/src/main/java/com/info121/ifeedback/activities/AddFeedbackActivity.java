@@ -39,7 +39,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
+////import com.crashlytics.android.Crashlytics;
 import com.info121.ifeedback.AbstractActivity;
 import com.info121.ifeedback.App;
 import com.info121.ifeedback.R;
@@ -73,7 +73,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnFocusChange;
 import butterknife.OnItemSelected;
-import io.fabric.sdk.android.Fabric;
+////import io.fabric.sdk.android.Fabric;
 import io.nlopez.smartlocation.OnLocationUpdatedListener;
 import io.nlopez.smartlocation.SmartLocation;
 
@@ -186,7 +186,7 @@ public class AddFeedbackActivity extends AbstractActivity implements OnLocationU
 
         //  mLocation.setText(Utils.getCompleteAddressString( mContext));
 
-        Fabric.with(this, new Crashlytics());
+        //Fabric.with(this, new Crashlytics());
     }
 
     @Override

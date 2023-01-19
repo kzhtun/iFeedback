@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
+
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
@@ -8,15 +8,15 @@ repositories {
 
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 31
+    buildToolsVersion '30.0.3'
 
     defaultConfig {
         applicationId "com.info121.ifeedback"
-        minSdkVersion 16
-        targetSdkVersion 27
-        versionCode 4
-        versionName "1.1"
+        minSdkVersion 18
+        targetSdkVersion 31
+        versionCode 8
+        versionName "1.4"
 
     }
     buildTypes {
@@ -25,6 +25,11 @@ android {
             // proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    namespace 'com.info121.ifeedback'
 
 
 }
@@ -37,7 +42,7 @@ dependencies {
     // Check for v11.4.2 or higher
     implementation 'com.google.firebase:firebase-core:16.0.8'
     // Add dependency
-    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
+    //implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
 
     implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
 
@@ -80,7 +85,7 @@ dependencies {
 
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
+    //implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
 
   
 }

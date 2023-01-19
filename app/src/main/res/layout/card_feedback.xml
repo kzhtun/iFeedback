@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!--<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:card_view="http://schemas.android.com/apk/res-auto"-->
+<!--   -->
+<!--    android:id="@+id/root_layout"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="100dp"-->
+<!--    android:padding="8dp"-->
+<!--    android:background="@color/card_bg"-->
+<!--    card_view:cardElevation="2dp"-->
+<!--    app:cardCornerRadius="8dp"-->
+<!--    card_view:cardUseCompatPadding="true">-->
+
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root_layout"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:padding="8dp"
-    android:background="@color/card_bg"
-    card_view:cardElevation="2dp"
-    card_view:cardUseCompatPadding="true">
+    android:layout_height="175dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="0dp"
+    app:cardCornerRadius="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,8 +36,9 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:text="1"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp"
+           />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -59,13 +73,30 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_status"
+
+            <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="status"
-                android:textSize="12sp" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="STATUS"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/tv_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="status"
+                    android:textSize="12sp" />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -74,13 +105,40 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="SENT ON"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tv_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Date Sent"
+                        android:textSize="12sp" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
                 <TextView
-                    android:id="@+id/tv_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Date Sent"
-                    android:textSize="12sp" />
+                    android:text="SENT TO"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="10sp" />
 
                 <TextView
                     android:id="@+id/tv_to"
@@ -89,6 +147,7 @@
                     android:layout_weight="1"
                     android:text="Sent To"
                     android:textSize="12sp" />
+                </android.support.v7.widget.LinearLayoutCompat>
 
             </LinearLayout>
 

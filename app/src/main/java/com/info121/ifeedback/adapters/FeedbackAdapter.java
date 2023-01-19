@@ -44,10 +44,15 @@ public class FeedbackAdapter extends RecyclerView.Adapter<FeedbackAdapter.ViewHo
      //   holder.srno.setText(String.valueOf(i + 1));
         holder.srno.setText(mFeedbacks.get(i).getId());
 
+//        holder.title.setText(mFeedbacks.get(i).getTitle());
+//        holder.status.setText("Status : " + mFeedbacks.get(i).getStatus());
+//        holder.date.setText("Date Sent : " + mFeedbacks.get(i).getSentat());
+//        holder.to.setText("To : " + mFeedbacks.get(i).getSourcecode());
+
         holder.title.setText(mFeedbacks.get(i).getTitle());
-        holder.status.setText("Status : " + mFeedbacks.get(i).getStatus());
-        holder.date.setText("Date Sent : " + mFeedbacks.get(i).getSentat());
-        holder.to.setText("To : " + mFeedbacks.get(i).getSourcecode());
+        holder.status.setText( mFeedbacks.get(i).getStatus());
+        holder.date.setText(mFeedbacks.get(i).getSentat());
+        holder.to.setText(mFeedbacks.get(i).getSourcecode());
 
         final Intent intent = new Intent(mContext, ViewFeedbackActivity.class);
 

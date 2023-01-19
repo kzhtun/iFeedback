@@ -52,7 +52,7 @@
                         android:layout_marginRight="4dp"
                         android:text="HH:MM:SS"
                         android:textColor="@color/white"
-                        android:textSize="14sp" />
+                        android:textSize="10sp" />
 
                 </FrameLayout>
 
@@ -71,7 +71,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="659dp"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="@dimen/control_spacing"
                     android:gravity="center_vertical"

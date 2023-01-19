@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.info121.ifeedback">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -16,6 +15,7 @@
     <!--<uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />-->
 
     <application
+        android:networkSecurityConfig="@xml/network_security_config"
         android:name=".App"
         android:allowBackup="false"
         android:icon="@mipmap/app_icon"
@@ -24,8 +24,10 @@
         android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".activities.PhotoDetailActivity"></activity>
-        <activity android:name=".activities.SettingsActivity">
+        <activity android:name=".activities.SettingsActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,7 +42,8 @@
         <activity android:name=".activities.RegistrationActivity" />
         <activity android:name=".activities.SplashActivity" />
 
-        <service android:name=".services.FirebaseMessagingService">
+        <service android:name=".services.FirebaseMessagingService"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
