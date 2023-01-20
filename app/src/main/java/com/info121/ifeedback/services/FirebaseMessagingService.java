@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.media.AudioAttributes;
 import android.net.Uri;
 
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.messaging.RemoteMessage;
 import com.info121.ifeedback.App;

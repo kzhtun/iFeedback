@@ -3,11 +3,10 @@ package com.info121.ifeedback;
 import android.location.Location;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.StrictMode;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 ////import com.crashlytics.android.Crashlytics;
@@ -16,7 +15,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
-import com.info121.ifeedback.api.APIClient;
 import com.info121.ifeedback.models.Block;
 import com.info121.ifeedback.models.CategoryRes;
 import com.info121.ifeedback.models.SourcesRes;
@@ -29,8 +27,6 @@ import com.orm.SugarApp;
 ////import io.fabric.sdk.android.Fabric;
 import java.io.File;
 import java.util.List;
-
-import javax.xml.transform.Source;
 
 
 public class App extends SugarApp {

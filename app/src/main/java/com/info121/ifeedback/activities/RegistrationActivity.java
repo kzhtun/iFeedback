@@ -9,10 +9,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.support.v7.widget.Toolbar;
+
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;

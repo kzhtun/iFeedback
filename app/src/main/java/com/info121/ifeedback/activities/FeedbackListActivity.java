@@ -1,10 +1,10 @@
 package com.info121.ifeedback.activities;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.info121.ifeedback.AbstractActivity;
@@ -13,7 +13,6 @@ import com.info121.ifeedback.R;
 import com.info121.ifeedback.adapters.FeedbackAdapter;
 import com.info121.ifeedback.api.APIClient;
 import com.info121.ifeedback.models.Feedback;
-import com.info121.ifeedback.models.SourcesTypeRes;
 
 import org.greenrobot.eventbus.Subscribe;
 

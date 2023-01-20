@@ -8,19 +8,17 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
+import androidx.core.app.ActivityCompat;
 
 import com.info121.ifeedback.AbstractActivity;
 import com.info121.ifeedback.App;
 import com.info121.ifeedback.R;
 import com.info121.ifeedback.api.APIClient;
-import com.info121.ifeedback.models.Block;
 import com.info121.ifeedback.models.CategoryRes;
 import com.info121.ifeedback.models.SourcesRes;
 import com.info121.ifeedback.models.SourcesTypeRes;
 import com.info121.ifeedback.models.UserProfileRes;
 import com.info121.ifeedback.utilities.PrefDB;
-import com.info121.ifeedback.utilities.Utils;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -28,7 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import retrofit2.Call;
 
 public class SplashActivity extends AbstractActivity {
     int PERMISSION_ALL = 1;

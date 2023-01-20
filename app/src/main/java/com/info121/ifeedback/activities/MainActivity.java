@@ -2,31 +2,23 @@ package com.info121.ifeedback.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
 import android.os.Handler;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 ////import com.crashlytics.android.Crashlytics;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.info121.ifeedback.App;
 import com.info121.ifeedback.R;
-import com.info121.ifeedback.api.APIClient;
-import com.info121.ifeedback.models.UserProfileRes;
 import com.info121.ifeedback.utilities.Utils;
-
-import net.hockeyapp.android.metrics.model.User;
 
 import java.util.Calendar;
 
@@ -34,8 +26,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 ////import io.fabric.sdk.android.Fabric;
-import io.nlopez.smartlocation.OnLocationUpdatedListener;
-import io.nlopez.smartlocation.SmartLocation;
 import io.nlopez.smartlocation.location.providers.LocationGooglePlayServicesProvider;
 
 public class MainActivity extends AppCompatActivity  {
