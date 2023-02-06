@@ -1,7 +1,11 @@
 package com.info121.ifeedback.activities;
 
+import static com.info121.ifeedback.App.prefDB;
+
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -32,6 +36,7 @@ import com.info121.ifeedback.models.UpdateProfileReq;
 import com.info121.ifeedback.models.UpdateProfileRes;
 import com.info121.ifeedback.models.SourcesRes;
 import com.info121.ifeedback.models.UserProfileRes;
+import com.info121.ifeedback.utilities.PrefDB;
 import com.info121.ifeedback.utilities.Utils;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -97,10 +102,15 @@ public class UserProfileActivity extends AbstractActivity {
 
     UpdateProfileReq profile;
 
+    Boolean isRecoverProfile = false;
+    PrefDB prefDB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+
+        prefDB = new PrefDB(getApplicationContext());
 
         ButterKnife.bind(this);
 
@@ -129,7 +139,11 @@ public class UserProfileActivity extends AbstractActivity {
         mEmail.setText(userDetail.getEmail());
         mMobile.setText(userDetail.getMobileno());
 
-        Glide.with(UserProfileActivity.this).load(userDetail.getPic()).into(mProfileImage);
+        String[] files = userDetail.getPic().split("/");
+        String proifleImage = "http://" +  prefDB.getString("CURRENT_IP") + "/ifeedbackresx/" + files[files.length-1];
+
+        Glide.with(UserProfileActivity.this).load(proifleImage).into(mProfileImage);
+
       ///  mProfileImage.setImageBitmap();
 
         for (int i = 0; i < sourceAdapter.getCount(); i++) {
@@ -147,6 +161,13 @@ public class UserProfileActivity extends AbstractActivity {
     private void populateSources() {
         sourceAdapter = new ArrayAdapter<SourcesRes>(mContext, R.layout.support_simple_spinner_dropdown_item, App.SourcesList);
         mSource.setAdapter(sourceAdapter);
+    }
+
+
+    @OnClick(R.id.btn_recover)
+    void btnRecoverOnClick(){
+        isRecoverProfile = true;
+        APIClient.GetUserProfile(mNewProfileCode.getText().toString());
     }
 
     @OnClick(R.id.set_profile)
@@ -336,12 +357,49 @@ public class UserProfileActivity extends AbstractActivity {
     public void onEvent(UserProfileRes res) {
         userDetail = res;
         populateUserDetail(res);
+
+        if(isRecoverProfile){
+            final AlertDialog alertDialog = new AlertDialog.Builder(UserProfileActivity.this)
+                    .setMessage("User profile found. Would you like to recover this profile to current device?\nBy clicking YES application will restart.")
+                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+
+                            prefDB.putString("USERNAME", mFullName.getText().toString());
+                            prefDB.putString("PROFILECODE", mNewProfileCode.getText().toString());
+
+                            btnSaveOnclick();
+
+                        }
+                    })
+                    .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+
+                    })
+                    .create();
+            alertDialog.setCancelable(false);
+            alertDialog.show();
+        }
+
     }
 
 
     @Subscribe
     public void onEvent(UpdateProfileRes res) {
         if (res.getStatus().equalsIgnoreCase("SUCCESS")) {
+
+            if(isRecoverProfile) {
+                Intent mStartActivity = new Intent(mContext, UserProfileActivity.class);
+                int mPendingIntentId = 654321;
+                PendingIntent mPendingIntent = PendingIntent.getActivity(mContext, mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+                AlarmManager mgr = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
+                mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+                System.exit(0);
+            }
 
             if (pd != null && pd.isShowing()) {
                 pd.dismiss();

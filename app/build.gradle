@@ -15,8 +15,8 @@ android {
         applicationId "com.info121.ifeedback"
         minSdkVersion 18
         targetSdkVersion 31
-        versionCode 8
-        versionName "1.4"
+        versionCode 13
+        versionName "1.8"
 
     }
     buildTypes {
@@ -41,6 +41,7 @@ dependencies {
 
     // Check for v11.4.2 or higher
     implementation 'com.google.firebase:firebase-core:16.0.8'
+
     // Add dependency
     //implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
 
@@ -57,7 +58,8 @@ dependencies {
     implementation 'io.nlopez.smartlocation:library:3.3.3'
     implementation 'com.google.android.gms:play-services-location:15.0.1'
 
-    implementation 'net.hockeyapp.android:HockeySDK:5.1.0'
+//    implementation 'net.hockeyapp.android:HockeySDK:5.1.0'
+
     implementation 'com.github.satyan:sugar:1.5'
 
     implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVer"
@@ -65,11 +67,10 @@ dependencies {
 
     implementation 'org.greenrobot:eventbus:3.1.1'
 
-    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 //    implementation "com.google.firebase:firebase-core:$rootProject.ext.firebaseVer"
 //    implementation "com.google.firebase:firebase-crash:$rootProject.ext.firebaseVer"
-
 
     implementation 'com.squareup.picasso:picasso:2.3.4'
     implementation 'com.nineoldandroids:library:2.4.0'

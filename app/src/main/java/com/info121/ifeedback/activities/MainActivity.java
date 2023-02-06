@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity  {
     Context mContext;
      LocationGooglePlayServicesProvider provider;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +75,9 @@ public class MainActivity extends AppCompatActivity  {
         mSourceName =  mNavigationView.getHeaderView(0).findViewById(R.id.source_name);
         mNavDateTime = mNavigationView.getHeaderView(0).findViewById(R.id.date_time);
 
+
+        // QKE4098 - Kyaw2
+        // ASU3280 - alexie lim
 
         mSourceName.setText(App.Source_Name);
         mWelcomeMsg.setText("Welcome " + App.User_Name );

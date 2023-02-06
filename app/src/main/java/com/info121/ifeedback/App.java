@@ -116,7 +116,7 @@ public class App extends SugarApp {
 
      //   prefDB.putString("CURRENT_IP", "118.200.199.248:81");
 
-       prefDB.putString("CURRENT_IP", "alexisinfo121.noip.me");
+        prefDB.putString("CURRENT_IP", "alexisinfo121.noip.me");
 
         User_Name = prefDB.getString("USERNAME");
         Profile_Code = prefDB.getString("PROFILECODE");

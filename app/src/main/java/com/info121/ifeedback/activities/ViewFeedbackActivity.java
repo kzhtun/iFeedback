@@ -1,5 +1,7 @@
 package com.info121.ifeedback.activities;
 
+import static com.info121.ifeedback.App.prefDB;
+
 import android.content.Context;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
@@ -194,7 +196,8 @@ public class ViewFeedbackActivity extends AbstractActivity {
     private String getPhotoUrl(String url) {
         String[] urls = url.split("/");
 
-        return "http://alexisinfo121.noip.me:81/ifeedbackresx/" + urls[urls.length - 1];
+        return "http://" +  prefDB.getString("CURRENT_IP") + "/ifeedbackresx/" + urls[urls.length - 1];
+        //return "http://alexisinfo121.noip.me:81/ifeedbackresx/" + urls[urls.length - 1];
     }
 
     @Override

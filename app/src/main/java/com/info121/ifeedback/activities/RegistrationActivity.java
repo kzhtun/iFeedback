@@ -85,7 +85,6 @@ public class RegistrationActivity extends AbstractActivity {
 
         userReq = new RegisterReq(Utils.getDeviceID(mContext));
 
-
         prefDB = new PrefDB(getApplicationContext());
 
         //Fabric.with(this, new Crashlytics());
